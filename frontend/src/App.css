@@ -1,0 +1,72 @@
+body {
+  background-image: url("./1334857-colourful-wallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+ul li {
+  list-style: none;
+}
+.material-icons:hover {
+  cursor: pointer;
+}
+.modal {
+  background: white;
+  width: 50%;
+  height: 400px;
+}
+form {
+  padding: 20px;
+}
+.modal-footer {
+  border-top: none !important;
+}
+@media (max-width: 1000px) {
+  .modal {
+    width: 70%;
+  }
+}
+@media (max-width: 600px) {
+  .modal {
+    width: 90%;
+  }
+}
+h2 {
+  font-family: "Anton", sans-serif;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow: 3px 3px 3px grey;
+}
+label {
+  color: white !important;
+  text-shadow: 2px 2px 2px grey;
+  letter-spacing: 2px;
+}
+.formStyle {
+  box-shadow: 2px 4px 40px 3px rgba(0, 0, 0, 0.623);
+  padding: 20px;
+}
+.taskDiv {
+  padding-right: 0;
+  padding-left: 0;
+}
+.taskItem {
+  background: rgba(245, 245, 245, 0.507);
+}
+@media (max-width: 800px) {
+  .jumbotron {
+    width: 80% !important;
+  }
+}
+@media (max-width: 400px) {
+  .jumbotron {
+    width: 100% !important;
+  }
+}
