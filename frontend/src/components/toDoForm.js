@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import TodoList from "./toDoList";
-import axios from "axios";
 class Todoform extends Component {
   render() {
     return (
@@ -10,7 +9,7 @@ class Todoform extends Component {
           <form action="/createData" method="post" className="mb-4">
             <div className="input-field ">
               <label htmlFor="subject">Subject</label>
-              <input id="subject" name="subject" required type="text" />
+              <input id="subject" name="subject" type="text" required />
             </div>
             <div className="input-field ">
               <label htmlFor="task">Task</label>
@@ -24,7 +23,12 @@ class Todoform extends Component {
             </div>
             <div className="form-group">
               <label>Date</label>
-              <input type="date" name="date" className="form-control" />
+              <input
+                type="date"
+                name="date"
+                className="form-control"
+                required
+              />
             </div>
             <div className="form-group">
               <label>Time</label>

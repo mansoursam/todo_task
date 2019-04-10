@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const modelSchema = new Schema({
   subject: String,
   task: String,
-  date: Date,
+  date: String,
   time: String
 });
 

@@ -9,10 +9,11 @@ class ToDoList extends Component {
       subject: "",
       task: "",
       date: "",
-      time: ""
+      time: "",
+      active: false
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getList();
   }
   //fetch data from our database
@@ -37,9 +38,32 @@ class ToDoList extends Component {
         console.log(err);
       });
   };
+  taskDone = () => {
+    const currentState = this.state.active;
+    this.setState({
+      active: !currentState
+    });
+  };
   render() {
+    //toggle the icon
+    const checked = (
+      <i onClick={this.taskDone} className="material-icons" title="done">
+        done
+      </i>
+    );
+    const notChecked = (
+      <i onClick={this.taskDone} className="material-icons" title="not done">
+        clear
+      </i>
+    );
     return (
-      <div className="container taskDiv">
+      <div
+        className={
+          this.state.active
+            ? "background-green container taskDiv"
+            : "taskDiv container"
+        }
+      >
         <ul className="list-group ">
           {this.state.arr.map(todo => {
             let date = new Date(`${todo.date}`);
@@ -48,7 +72,7 @@ class ToDoList extends Component {
             return (
               <li key={todo._id} className="taskItem m-1 list-group-item">
                 <b> {todo.subject}</b>
-                <br /> {todo.task} on {taskDay} at {todo.time}
+                <br /> {todo.task} On {taskDay} At {todo.time}
                 <div className="float-right">
                   <i
                     onClick={() => this.deleteData(`${todo._id}`)}
@@ -58,6 +82,7 @@ class ToDoList extends Component {
                     delete
                   </i>
                   <UpdateForm key={todo._id} taskData={todo} />
+                  {this.state.active ? notChecked : checked}
                 </div>
               </li>
             );

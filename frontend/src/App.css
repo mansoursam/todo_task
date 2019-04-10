@@ -1,9 +1,9 @@
 body {
-  background-image: url("./1334857-colourful-wallpaper.jpg");
+  /* background-image: url("./1334857-colourful-wallpaper.jpg");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  height: 100%;
+  background-repeat: no-repeat; */
+  background: skyblue;
   margin: 0;
   padding: 0;
 }
@@ -56,6 +56,7 @@ label {
 .taskDiv {
   padding-right: 0;
   padding-left: 0;
+  margin-bottom: 20px;
 }
 .taskItem {
   background: rgba(245, 245, 245, 0.507);
@@ -69,4 +70,8 @@ label {
   .jumbotron {
     width: 100% !important;
   }
+}
+.background-green {
+  background-color: #5cb85c;
+  text-decoration-line: line-through;
 }

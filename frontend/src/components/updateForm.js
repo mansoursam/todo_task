@@ -13,40 +13,42 @@ class UpdateForm extends Component {
     };
     this.updateData = this.updateData.bind(this);
   }
-  onChangeSubject(e) {
+  onChangeSubject = e => {
     this.setState({
       subject: e.target.value
     });
-  }
-  onChangeTask(e) {
+  };
+  onChangeTask = e => {
     this.setState({
       task: e.target.value
     });
-  }
-  onChangeDate(e) {
+  };
+  onChangeDate = e => {
     this.setState({
       date: e.target.value
     });
-  }
-  onChangeTime(e) {
+  };
+  onChangeTime = e => {
     this.setState({
       time: e.target.value
     });
-  }
+  };
   test(e) {
     e.preventDefault();
     console.log(this.state.taskId);
   }
-  updateData(id) {
+  updateData = id => {
     console.log(id);
+
     const obj = {
       subject: this.state.subject,
       task: this.state.task,
       date: this.state.date,
       time: this.state.time
     };
+
     axios.post("/updateData/" + id, obj).then(res => console.log(res));
-  }
+  };
   render() {
     console.log(this.state.taskId);
     return (
@@ -72,22 +74,23 @@ class UpdateForm extends Component {
             <input
               type="text"
               value={this.state.subject}
-              onChange={this.onChangeSubject.bind(this)}
+              onChange={this.onChangeSubject}
             />
             <input
               type="text"
               value={this.state.task}
-              onChange={this.onChangeTask.bind(this)}
+              onChange={this.onChangeTask}
             />
             <input
               type="text"
               value={this.state.date}
-              onChange={this.onChangeDate.bind(this)}
+              onChange={this.onChangeDate}
+              required
             />
             <input
               type="text"
               value={this.state.time}
-              onChange={this.onChangeTime.bind(this)}
+              onChange={this.onChangeTime}
             />
             <div className="modal-footer">
               <input
