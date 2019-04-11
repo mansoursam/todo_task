@@ -10,7 +10,7 @@ class ToDoList extends Component {
       task: "",
       date: "",
       time: "",
-      active: false
+      icon: "done"
     };
   }
   componentWillMount() {
@@ -38,56 +38,47 @@ class ToDoList extends Component {
         console.log(err);
       });
   };
-  taskDone = () => {
-    const currentState = this.state.active;
-    this.setState({
-      active: !currentState
-    });
+  taskDone = e => {
+    let elm = e.target.parentElement.parentElement;
+    console.log(e.target);
+    elm.classList.toggle("background-green");
   };
   render() {
-    //toggle the icon
-    const checked = (
-      <i onClick={this.taskDone} className="material-icons" title="done">
-        done
-      </i>
-    );
-    const notChecked = (
-      <i onClick={this.taskDone} className="material-icons" title="not done">
-        clear
-      </i>
-    );
     return (
-      <div
-        className={
-          this.state.active
-            ? "background-green container taskDiv"
-            : "taskDiv container"
-        }
-      >
-        <ul className="list-group ">
-          {this.state.arr.map(todo => {
-            let date = new Date(`${todo.date}`);
-            let taskDay = date.toDateString();
-            console.log(date);
-            return (
-              <li key={todo._id} className="taskItem m-1 list-group-item">
-                <b> {todo.subject}</b>
-                <br /> {todo.task} On {taskDay} At {todo.time}
-                <div className="float-right">
-                  <i
-                    onClick={() => this.deleteData(`${todo._id}`)}
-                    className="material-icons text-danger"
-                    title="delete Task"
-                  >
-                    delete
-                  </i>
-                  <UpdateForm key={todo._id} taskData={todo} />
-                  {this.state.active ? notChecked : checked}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+      <div>
+        {this.state.arr.map(todo => {
+          let date = new Date(`${todo.date}`);
+          let taskDay = date.toDateString();
+          console.log(date);
+          return (
+            <div key={todo._id} className=" taskDiv container">
+              <ul className="list-group ">
+                <li className="taskItem m-1 list-group-item">
+                  <h6>
+                    <b>{todo.subject}</b>
+                  </h6>
+                  <span>
+                    {todo.task} On {taskDay} At {todo.time}
+                  </span>
+                  <div className="row d-flex justify-content-center mb-0 align-items-center">
+                    <i
+                      onClick={() => this.deleteData(`${todo._id}`)}
+                      className="fas fa-trash-alt text-danger fa-lg"
+                      title="delete Task"
+                    />
+                    <UpdateForm key={todo._id} taskData={todo} />{" "}
+                    <i
+                      onClick={this.taskDone}
+                      className="fas fa-check-circle fa-lg"
+                      title="done"
+                    />
+                    &nbsp;
+                  </div>
+                </li>
+              </ul>
+            </div>
+          );
+        })}
       </div>
     );
   }

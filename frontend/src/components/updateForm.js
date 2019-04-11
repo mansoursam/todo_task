@@ -57,11 +57,9 @@ class UpdateForm extends Component {
           onClick={e => this.test(e)}
           data-toggle="modal"
           data-target={`#exampleModal${this.state.taskId}`}
-          className="material-icons text-info"
           title="Edit Task"
-        >
-          edit
-        </i>
+          className="fas fa-edit fa-lg ml-2 mr-1 text-primary"
+        />
         <div
           id={`exampleModal${this.state.taskId}`}
           className="modal mt-5 p-0 "
